@@ -20,8 +20,6 @@ export class MixpanelService {
   init(projectToken: string) {
     if (!this.initialized) {
       mixpanel.init(projectToken, { debug: false, autocapture: false });
-      // expose to window for any legacy code that expects window.mixpanel
-      (window as any).mixpanel = mixpanel;
       mixpanel.register({
         vid: this.getVid()
       });
